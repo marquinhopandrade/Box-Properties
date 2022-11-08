@@ -8,14 +8,42 @@ namespace Box
 {
     internal class Box
     {
-        public int length = 3;
-        public int height;
-        public int width;
+        private int length = 3;
+        private int height;
+       // public int width;
         public int volume;
 
-        public int GetLength()
+
+        public int Width { get; set; }
+
+        //public int width
+        //{
+        //    get
+        //    {
+        //        return this.width;
+        //    }
+        //    set
+        //    {
+        //        this.width = value;
+        //    }
+        //}
+        public int Height
         {
-            return this.length;
+            get
+            {
+                return height;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    height = -value;
+                }
+                else
+                {
+                    height = value;
+                }
+            }
         }
         public void SetLength(int length)
         {
@@ -26,13 +54,18 @@ namespace Box
             }
             this.length = length;
         }
+        public int GetLength()
+        {
+            return this.length;
+        }
+
         public int GetVolume()
         {
-            return this.length * this.height * this.width;
+            return this.length * this.height * this.Width;
         }
         public void DisplayInfo()
         {
-            Console.WriteLine("Box length is {0}, height is {1} and width is {2}, so volume is: {3} ",this.length, this.height, this.width,GetVolume());
+            Console.WriteLine("Box length is {0}, height is {1} and width is {2}, so volume is: {3} ",this.length, this.height, this.Width,GetVolume());
         }
     }
 }
