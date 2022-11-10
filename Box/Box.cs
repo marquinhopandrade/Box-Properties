@@ -8,25 +8,47 @@ namespace Box
 {
     internal class Box
     {
-        private int length = 3;
-        private int height;
-       // public int width;
-        public int volume;
+       private int length = 3;
+       private int height;
+       private int width;
+       private int volume;
 
 
-        public int Width { get; set; }
+        public Box(int length, int height, int width)
+        {
+            this.length = length;
+            this.height = height;
+            this.Width = width;
+        }
+        /*Usar essas quando não houver necessidade de adicionar uma lógica à função, apenas o set e o get*/
+        //public int Width { get; set; }
+        //public int Length { get; set; }
+        //public int Height { get; set; }
 
-        //public int width
-        //{
-        //    get
-        //    {
-        //        return this.width;
-        //    }
-        //    set
-        //    {
-        //        this.width = value;
-        //    }
-        //}
+        public int Width
+        {
+            get
+            {
+                return this.width;
+            }
+            set
+            {
+                this.width = value;
+            }
+        }
+
+        public int Volume
+        {
+            get
+            {
+                return this.length * this.height * this.Width;
+            }
+            set
+            {
+                this.volume = value;
+            }
+        }
+
         public int Height
         {
             get
@@ -37,15 +59,30 @@ namespace Box
             {
                 if (value < 0)
                 {
-                    height = -value;
+                    this.height = -value;
                 }
                 else
                 {
-                    height = value;
+                    this.height = value;
                 }
             }
         }
-        public void SetLength(int length)
+        public int Length
+        {
+            get
+            {
+                return this.length;
+            }
+            set
+            {
+                if (length < 0)
+                {
+                    throw new Exception("Length should be higher than 0");
+                }
+                this.length = value;
+            }
+        }
+        /*public void SetLength(int length)
         {
             //this.length refere-se ao length da classe, e não ao parâmetro da função
             if (length < 0)
@@ -57,15 +94,10 @@ namespace Box
         public int GetLength()
         {
             return this.length;
-        }
-
-        public int GetVolume()
-        {
-            return this.length * this.height * this.Width;
-        }
+        }*/
         public void DisplayInfo()
         {
-            Console.WriteLine("Box length is {0}, height is {1} and width is {2}, so volume is: {3} ",this.length, this.height, this.Width,GetVolume());
+            Console.WriteLine("Box length is {0}, height is {1} and width is {2}, so volume is: {3} ",this.length, this.height, this.Width, this.length * this.height * this.Width);
         }
     }
 }
